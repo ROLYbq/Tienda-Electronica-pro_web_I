@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda Electrónica</title>
+    <meta name="description" content="Tienda Electrónica: descubre celulares, laptops, tablets, relojes y electrodomésticos de última tecnología.">
+    <meta name="author" content="Roly Barrera Quispe">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="menu">
+    <nav>
+        <div class="logo">Tienda Electrónica</div>
+
+        <!-- ÍCONO HAMBURGUESA -->
+        <div class="hamburguesa" id="hamburguesa">☰</div>
+
+        <!-- MENÚ -->
+        <ul id="nav-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="celulares.html">Celulares</a></li>
+            <li><a href="laptops.html">Laptops</a></li>
+            <li><a href="tablets.html">Tablets</a></li>
+            <li><a href="relojes.html">Relojes</a></li>
+            <li><a href="televisores.html">Televisores</a></li>
+            <li><a href="electrodomesticos.html">Electrodomésticos</a></li>
+
+            <!-- OPCIONES NUEVAS SOLO PARA HAMBURGUESA -->
+            <li><a href="promociones.html">🔥 Promociones</a></li>
+            <li><a href="#">👤 Iniciar Sesión</a></li>
+            <li><a href="informacion.html">ℹ️ Información</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="portada">
+    <h1>Tecnología moderna</h1>
+    <p>Explora nuestra colección de productos electrónicos</p>
+    <button>Ver Productos</button>
+</section>
+
+<section class="grupo">
+    <h2>Celulares</h2>
+    <div class="items-container">
+        <div class="item">
+            <img src="img/17pro.webp" alt="iPhone 17 Pro">
+            <p>iPhone 17 Pro</p>
+        </div>
+        <div class="item">
+            <img src="img/17pro.webp" alt="iPhone 17 Pro">
+            <p>iPhone 17 Pro</p>
+        </div>
+        <div class="item">
+            <img src="img/17pro.webp" alt="iPhone 17 Pro">
+            <p>iPhone 17 Pro</p>
+        </div>
+    </div>
+</section>
+
+<section class="grupo">
+    <h2>Laptops</h2>
+    <div class="items-container">
+        <div class="item">
+            <img src="img/macbookpro.jpg" alt="MacBook Pro 14">
+            <p>MacBook Pro 14”</p>
+        </div>
+        <div class="item">
+            <img src="img/macbookpro.jpg" alt="MacBook Pro 14">
+            <p>MacBook Pro 14”</p>
+        </div>
+    </div>
+</section>
+
+<section class="grupo">
+    <h2>Televisores</h2>
+    <div class="items-container">
+        <div class="item">
+            <img src="https://example.com/tv.jpg" alt="TV 65 pulgadas">
+            <p>Smart TV 65”</p>
+        </div>
+    </div>
+</section>
+
+<section class="grupo">
+    <h2>Tablets</h2>
+    <div class="items-container">
+        <div class="item">
+            <img src="https://example.com/ipad.jpg" alt="iPad Pro">
+            <p>iPad Pro</p>
+        </div>
+    </div>
+</section>
+
+<section class="grupo">
+    <h2>Relojes</h2>
+    <div class="items-container">
+        <div class="item">
+            <img src="https://example.com/reloj.jpg" alt="Reloj inteligente">
+            <p>Smartwatch</p>
+        </div>
+    </div>
+</section>
+
+<section class="grupo">
+    <h2>Electrodomésticos</h2>
+    <div class="items-container">
+        <div class="item">
+            <img src="https://example.com/refri.jpg" alt="Refrigeradora">
+            <p>Refrigeradora Inteligente</p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>© 2025 Tienda Electrónica</p>
+</footer>
+
+<script>
+const hamburguesa = document.getElementById('hamburguesa');
+const navLinks = document.getElementById('nav-links');
+
+hamburguesa.addEventListener('click', () => {
+    navLinks.classList.toggle('show');
+});
+</script>
+
+</body>
+</html>

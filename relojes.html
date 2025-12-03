@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relojes - Tienda Electrónica</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="menu">
+    <nav>
+        <div class="logo">Tienda Electrónica</div>
+        <div class="hamburguesa" id="hamburguesa">&#9776;</div>
+        <ul id="nav-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="celulares.html">Celulares</a></li>
+            <li><a href="laptops.html">Laptops</a></li>
+            <li><a href="tablets.html">Tablets</a></li>
+            <li><a href="relojes.html">Relojes</a></li>
+            <li><a href="televisores.html">Televisores</a></li>
+            <li><a href="electrodomesticos.html">Electrodomésticos</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="grupo">
+    <h2>Relojes</h2>
+    <div class="items-container">
+        <div class="item"><img src="https://example.com/reloj.jpg"><p>Smartwatch</p></div>
+    </div>
+</section>
+
+<script>
+const hamburguesa = document.getElementById('hamburguesa');
+const navLinks = document.getElementById('nav-links');
+hamburguesa.addEventListener('click', () => {
+    navLinks.classList.toggle('show');
+});
+</script>
+
+</body>
+</html>
