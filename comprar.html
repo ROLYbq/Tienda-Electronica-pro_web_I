@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Comparar Productos - Tienda Electrónica</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="menu">
+    <nav>
+        <div class="logo">Tienda Electrónica</div>
+        <div class="hamburguesa" id="hamburguesa">☰</div>
+        <ul id="nav-links">
+            <li><a href="Pg_web_de_venta_electronicos.html">Inicio</a></li>
+            <li><a href="celulares.html">Celulares</a></li>
+            <li><a href="laptops.html">Laptops</a></li>
+            <li><a href="tablets.html">Tablets</a></li>
+            <li><a href="relojes.html">Relojes</a></li>
+            <li><a href="televisores.html">Televisores</a></li>
+            <li><a href="electrodomesticos.html">Electrodomésticos</a></li>
+            <li><a href="comparar.html" class="active">Comparar</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="grupo">
+    <h2>Comparar Productos</h2>
+    <div id="comparar-container" class="items-container">
+        <!-- Aquí se mostrarán los productos seleccionados para comparar -->
+    </div>
+</section>
+
+<section class="formulario-comparar" style="display:none; margin: 20px auto; width: 90%; max-width: 600px; background-color: var(--tarjeta); padding: 20px; border-radius: 12px;">
+    <h3>Formulario para confirmar compra</h3>
+    <form id="form-comparar">
+        <label for="nombre">Nombre completo:</label><br />
+        <input type="text" id="nombre" name="nombre" required /><br /><br />
+
+        <label for="telefono">Teléfono (WhatsApp):</label><br />
+        <input type="tel" id="telefono" name="telefono" placeholder="Ej: 74901931" required /><br /><br />
+
+        <label for="email">Email (opcional):</label><br />
+        <input type="email" id="email" name="email" placeholder="tuemail@dominio.com" /><br /><br />
+
+        <label for="formaPago">Forma de pago:</label><br />
+        <select id="formaPago" name="formaPago" required>
+            <option value="tarjeta">Tarjeta bancaria</option>
+            <option value="banco">Pago en banco</option>
+            <option value="bitcoin">Bitcoin</option>
+            <option value="qr">Pago por QR (WhatsApp)</option>
+        </select><br /><br />
+
+        <button type="submit">Enviar solicitud</button>
+    </form>
+</section>
+
+<footer>
+    <p>© 2025 Tienda Electrónica</p>
+</footer>
+
+<script src="script.js"></script>
+<script>
+    // Mostrar hamburguesa
+    const hamburguesa = document.getElementById('hamburguesa');
+    const navLinks = document.getElementById('nav-links');
+    hamburguesa.addEventListener('click', () => {
+        navLinks.classList.toggle('show');
+    });
+
+    // Aquí vamos a simular los productos para comparar (puede venir del localStorage o API)
+    let productosParaComparar = JSON.parse(localStorage.getItem('carrito')) || [];
+
+    const container = document.getElementById('comparar-container');
+    const formComparar = document.querySelector('.formulario-comparar');
+    const form = document.getElementById('form-comparar');
+
+    function mostrarProductos() {
+        if(productosParaComparar.length === 0) {
+            container.innerHTML = "<p>No tienes productos seleccionados para comparar.</p>";
+            return;
+        }
+        container.innerHTML = ''; // limpiar
+        productosParaComparar.forEach((prod, index) => {
+            const div = document.createElement('div');
+            div.classList.add('item');
+            div.innerHTML = `
+                <img src="${prod.img}" alt="${prod.nombre}" />
+                <p><strong>${prod.nombre}</strong></p>
+                <p>Precio: Bs. ${prod.precio}</p>
+                <p>${prod.descripcion || ''}</p>
+                <button onclick="quitarProducto(${index})">Quitar</button>
+            `;
+            container.appendChild(div);
+        });
+        formComparar.style.display = "block";
+    }
+
+    function quitarProducto(index) {
+        productosParaComparar.splice(index, 1);
+        localStorage.setItem('carrito', JSON.stringify(productosParaComparar));
+        mostrarProductos();
+    }
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert("Gracias por enviar tu solicitud. Nos contactaremos por WhatsApp al número: " + form.telefono.value);
+        // Aquí puedes agregar código para enviar datos a un servidor o email, etc.
+        // También podrías abrir un enlace directo a WhatsApp con mensaje prellenado.
+    });
+
+    mostrarProductos();
+</script>
+
+</body>
+</html>

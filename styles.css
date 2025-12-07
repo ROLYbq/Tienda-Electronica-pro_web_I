@@ -8,6 +8,10 @@
     --gris: #A0AEC0;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -18,8 +22,24 @@ body {
 
 .menu {
     background: var(--fondo2);
-    padding: 18px 0;
+    padding: 18px 20px;
     border-bottom: 2px solid var(--acento);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.menu nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu .logo {
+    font-weight: bold;
+    font-size: 24px;
+    color: var(--acento);
+    cursor: pointer;
 }
 
 .menu ul {
@@ -42,6 +62,15 @@ body {
 .menu a:hover {
     color: var(--acento);
 }
+
+.hamburguesa {
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: var(--acento);
+}
+
+/* Contenedor principal */
 
 .portada {
     background: linear-gradient(90deg, #002B5B, #5A01A7);
@@ -101,6 +130,7 @@ body {
     box-shadow: 0 0 12px rgba(0, 229, 255, 0.2);
     text-align: center;
     transition: 0.3s;
+    position: relative;
 }
 
 .item img {
@@ -113,19 +143,28 @@ body {
     box-shadow: 0 0 20px rgba(56, 189, 248, 0.5);
 }
 
+.item button {
+    margin-top: 10px;
+    background-color: var(--acento);
+    border: none;
+    color: #000;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.item button:hover {
+    background-color: var(--acento2);
+}
+
 footer {
     margin-top: 50px;
     background-color: var(--fondo2);
     padding: 15px;
     text-align: center;
     color: var(--gris);
-}
-
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
 }
 
 nav ul {
@@ -137,12 +176,6 @@ nav ul {
 nav ul li a {
     text-decoration: none;
     color: white;
-}
-
-.hamburguesa {
-    display: none;
-    font-size: 30px;
-    cursor: pointer;
 }
 
 @media screen and (max-width: 768px) {
@@ -170,4 +203,62 @@ nav ul li a {
         flex-direction: column;
         align-items: center;
     }
+}
+
+/* Carrito y comparación */
+
+#carrito-container, #comparacion-container {
+    position: fixed;
+    top: 70px;
+    right: 10px;
+    width: 320px;
+    max-height: 80vh;
+    background-color: var(--tarjeta);
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 229, 255, 0.4);
+    padding: 10px;
+    overflow-y: auto;
+    z-index: 1100;
+    display: none;
+}
+
+#carrito-container h3, #comparacion-container h3 {
+    margin-top: 0;
+    color: var(--acento);
+}
+
+#carrito-list, #comparacion-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#carrito-list li, #comparacion-list li {
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--acento2);
+    padding-bottom: 6px;
+}
+
+#carrito-list li:last-child, #comparacion-list li:last-child {
+    border-bottom: none;
+}
+
+#carrito-actions {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#carrito-actions button {
+    background-color: var(--acento);
+    border: none;
+    color: #000;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#carrito-actions button:hover {
+    background-color: var(--acento2);
 }

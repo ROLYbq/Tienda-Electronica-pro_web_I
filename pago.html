@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finalizar Compra</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="menu">
+    <nav>
+        <div class="logo">Tienda Electrónica</div>
+        <a href="carrito.html" class="btn-volver">Volver al carrito</a>
+    </nav>
+</header>
+
+<section class="grupo">
+    <h2>Finalizar Compra</h2>
+
+    <div id="productos-compra"></div>
+
+    <h3 id="total"></h3>
+
+    <h2>Datos del comprador</h2>
+
+    <form id="formCompra">
+        <label>Nombre completo:</label>
+        <input type="text" required>
+
+        <label>Teléfono:</label>
+        <input type="text" required>
+
+        <label>Dirección:</label>
+        <input type="text" required>
+
+        <label>Referencia:</label>
+        <input type="text">
+
+        <button type="submit" class="boton-comprar">Confirmar pedido</button>
+    </form>
+</section>
+
+<script>
+// Cargar productos del carrito
+let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+const contenedor = document.getElementById("productos-compra");
+const totalHtml = document.getElementById("total");
+
+let total = 0;
+
+carrito.forEach(p => {
+    const item = document.createElement("div");
+    item.classList.add("item-compra");
+
+    item.innerHTML = `
+        <p><strong>${p.nombre}</strong> - Bs ${p.precio}</p>
+    `;
+
+    contenedor.appendChild(item);
+    total += p.precio;
+});
+
+totalHtml.innerText = "Total a pagar: Bs " + total;
+
+// Enviar pedido
+document.getElementById("formCompra").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    alert("¡Pedido realizado con éxito! Nos comunicaremos contigo.");
+    
+    localStorage.removeItem("carrito");
+
+    window.location.href = "index.html";
+});
+</script>
+
+</body>
+</html>

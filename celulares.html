@@ -13,7 +13,7 @@
         <div class="logo">Tienda Electrónica</div>
         <div class="hamburguesa" id="hamburguesa">&#9776;</div>
         <ul id="nav-links">
-            <li><a href="index.html">Inicio</a></li>
+             <li><a href="Pg_web_de_venta_electronicos.html">Inicio</a></li>
             <li><a href="celulares.html">Celulares</a></li>
             <li><a href="laptops.html">Laptops</a></li>
             <li><a href="tablets.html">Tablets</a></li>
@@ -26,10 +26,41 @@
 
 <section class="grupo">
     <h2>Celulares</h2>
+
+    <h3>iPhone</h3>
     <div class="items-container">
-        <div class="item"><img src="img/17pro.webp"><p>iPhone 17 Pro</p></div>
-        <div class="item"><img src="img/17pro.webp"><p>iPhone 17 Pro</p></div>
-        <div class="item"><img src="img/17pro.webp"><p>iPhone 17 Pro</p></div>
+        <div class="item" onclick="verDetalle('iPhone 17 Pro', 'img/iPhone_17_Pro.webp', 1200, ['Pantalla OLED', 'Triple cámara', '5G', 'iOS 18'])">
+            <img src="img/iPhone_17_Pro.webp" alt="iPhone 17 Pro">
+            <p>iPhone 17 Pro</p>
+            <p>Bs 8.300</p>
+        </div>
+    </div>
+
+    <h3>Samsung</h3>
+    <div class="items-container">
+        <div class="item" onclick="verDetalle('Samsung Galaxy S24', 'img/S24.webp', 1100, ['Pantalla AMOLED', 'Cámara cuádruple', 'Android 13', '5G'])">
+            <img src="img/S24.webp" alt="Samsung Galaxy S24">
+            <p>Samsung Galaxy S24</p>
+            <p>Bs 7.600</p>
+        </div>
+    </div>
+
+    <h3>Xiaomi</h3>
+    <div class="items-container">
+        <div class="item" onclick="verDetalle('Xiaomi 15 Ultra', 'img/xiaomi_15_ultra.webp', 700, ['Pantalla AMOLED', 'Carga rápida', 'Android 13', '5G'])">
+            <img src="img/xiaomi_15_ultra.webp" alt="Xiaomi 15 Ultra">
+            <p>Xiaomi 15 Ultra</p>
+            <p>Bs 4.900</p>
+        </div>
+    </div>
+
+    <h3>Honor</h3>
+    <div class="items-container">
+        <div class="item" onclick="verDetalle('Honor Magic 5 Pro', 'img/honor_magic_5_pro.webp', 850, ['Pantalla OLED 120Hz', 'Cámara triple', 'Android 13', '5G'])">
+            <img src="img/honor_magic_5_pro.webp" alt="Honor Magic 5 Pro">
+            <p>Honor Magic 5 Pro</p>
+            <p>Bs 5.950</p>
+        </div>
     </div>
 </section>
 
@@ -39,6 +70,13 @@ const navLinks = document.getElementById('nav-links');
 hamburguesa.addEventListener('click', () => {
     navLinks.classList.toggle('show');
 });
+
+function verDetalle(nombre, img, precio, caracteristicas) {
+    // Guardar info del producto en localStorage
+    localStorage.setItem('productoDetalle', JSON.stringify({nombre, img, precio, caracteristicas}));
+    // Redirigir a la página de detalles
+    window.location.href = 'detalle.html';
+}
 </script>
 
 </body>

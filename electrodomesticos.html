@@ -26,9 +26,35 @@
 
 <section class="grupo">
     <h2>Electrodomésticos</h2>
+
+    <h3>Refrigeradoras</h3>
     <div class="items-container">
-        <div class="item"><img src="https://example.com/refri.jpg"><p>Refrigeradora Inteligente</p></div>
+        <div class="item" onclick="verDetalle('Samsung RT38', 'img/samsung_rt38.webp', 600, ['Frost Free', '328L', 'No Frost', 'Color Silver'])">
+            <img src="img/samsung_rt38.webp" alt="Samsung RT38">
+            <p>Samsung RT38</p>
+            <p>Bs 4.500</p>
+        </div>
+        <div class="item" onclick="verDetalle('LG GN-B502', 'img/lg_gnb502.webp', 650, ['Frost Free', '350L', 'No Frost', 'Color Blanco'])">
+            <img src="img/lg_gnb502.webp" alt="LG GN-B502">
+            <p>LG GN-B502</p>
+            <p>Bs 4.900</p>
+        </div>
     </div>
+
+    <h3>Lavadoras</h3>
+    <div class="items-container">
+        <div class="item" onclick="verDetalle('Samsung WW70', 'img/samsung_ww70.webp', 400, ['Carga frontal', '7kg', '1400 rpm', 'Color Blanco'])">
+            <img src="img/samsung_ww70.webp" alt="Samsung WW70">
+            <p>Samsung WW70</p>
+            <p>Bs 3.200</p>
+        </div>
+        <div class="item" onclick="verDetalle('LG F4WV709P1', 'img/lg_f4wv709p1.webp', 450, ['Carga frontal', '9kg', '1200 rpm', 'Color Blanco'])">
+            <img src="img/lg_f4wv709p1.webp" alt="LG F4WV709P1">
+            <p>LG F4WV709P1</p>
+            <p>Bs 3.600</p>
+        </div>
+    </div>
+
 </section>
 
 <script>
@@ -37,6 +63,11 @@ const navLinks = document.getElementById('nav-links');
 hamburguesa.addEventListener('click', () => {
     navLinks.classList.toggle('show');
 });
+
+function verDetalle(nombre, img, precio, caracteristicas) {
+    localStorage.setItem('productoDetalle', JSON.stringify({nombre, img, precio, caracteristicas}));
+    window.location.href = 'detalle.html';
+}
 </script>
 
 </body>

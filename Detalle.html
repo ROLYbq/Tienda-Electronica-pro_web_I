@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Producto - Tienda Electrónica</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .detalle-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            width: 90%;
+            margin: 40px auto;
+            background-color: #1F2937;
+            padding: 20px;
+            border-radius: 12px;
+        }
+        .detalle-imagen {
+            flex: 1;
+            min-width: 300px;
+        }
+        .detalle-imagen img {
+            width: 100%;
+            border-radius: 12px;
+        }
+        .detalle-info {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .detalle-info h2 {
+            margin: 0;
+            color: #00E5FF;
+        }
+        .detalle-info p {
+            margin: 0;
+            color: #FFFFFF;
+        }
+        .caracteristicas {
+            list-style: disc;
+            margin-left: 20px;
+            color: #A0AEC0;
+        }
+        .detalle-botones {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .detalle-botones button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+        .agregar-carrito {
+            background-color: #00E5FF;
+            color: #000;
+        }
+        .agregar-carrito:hover {
+            background-color: #38BDF8;
+        }
+        .comparar {
+            background-color: #FFFFFF;
+            color: #000;
+        }
+        .comparar:hover {
+            background-color: #A0AEC0;
+        }
+    </style>
+</head>
+<body>
+
+<header class="menu">
+    <nav>
+        <div class="logo">Tienda Electrónica</div>
+        <div class="hamburguesa" id="hamburguesa">&#9776;</div>
+        <ul id="nav-links">
+            <li><a href="Pg_web_de_venta_electronicos.html">Inicio</a></li>
+            <li><a href="celulares.html">Celulares</a></li>
+            <li><a href="laptops.html">Laptops</a></li>
+            <li><a href="tablets.html">Tablets</a></li>
+            <li><a href="relojes.html">Relojes</a></li>
+            <li><a href="televisores.html">Televisores</a></li>
+            <li><a href="electrodomesticos.html">Electrodomésticos</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="detalle-container">
+    <div class="detalle-imagen">
+        <img id="producto-img" src="" alt="Producto">
+    </div>
+    <div class="detalle-info">
+        <h2 id="producto-nombre"></h2>
+        <p id="producto-precio"></p>
+        <ul class="caracteristicas" id="producto-caracteristicas"></ul>
+        <div class="detalle-botones">
+            <button class="agregar-carrito" onclick="agregarCarrito()">Agregar al carrito</button>
+            <button class="comparar" onclick="compararProducto()">Comparar</button>
+        </div>
+    </div>
+</div>
+
+<script>
+const hamburguesa = document.getElementById('hamburguesa');
+const navLinks = document.getElementById('nav-links');
+hamburguesa.addEventListener('click', () => {
+    navLinks.classList.toggle('show');
+});
+
+// Mostrar los detalles del producto
+const producto = JSON.parse(localStorage.getItem('productoDetalle'));
+if (producto) {
+    document.getElementById('producto-nombre').textContent = producto.nombre;
+    document.getElementById('producto-img').src = producto.img;
+    document.getElementById('producto-precio').textContent = `Bs ${producto.precio}`;
+    
+    const lista = document.getElementById('producto-caracteristicas');
+    lista.innerHTML = '';
+    producto.caracteristicas.forEach(c => {
+        const li = document.createElement('li');
+        li.textContent = c;
+        lista.appendChild(li);
+    });
+} else {
+    document.getElementById('producto-nombre').textContent = "Producto no encontrado";
+}
+
+// Funciones de botones
+function agregarCarrito() {
+    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    carrito.push(producto);
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+    alert('Producto agregado al carrito');
+}
+
+function compararProducto() {
+    let comparacion = JSON.parse(localStorage.getItem('comparacion')) || [];
+    comparacion.push(producto);
+    localStorage.setItem('comparacion', JSON.stringify(comparacion));
+    alert('Producto agregado para comparar');
+}
+</script>
+
+</body>
+</html>

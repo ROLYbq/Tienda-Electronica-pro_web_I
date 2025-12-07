@@ -1,36 +1,29 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Tienda Electrónica</title>
-    <meta name="description" content="Tienda Electrónica: descubre celulares, laptops, tablets, relojes y electrodomésticos de última tecnología.">
-    <meta name="author" content="Roly Barrera Quispe">
-    <link rel="stylesheet" href="styles.css">
+    <meta name="description" content="Tienda Electrónica: descubre celulares, laptops, tablets, relojes y electrodomésticos de última tecnología." />
+    <meta name="author" content="Roly Barrera Quispe" />
+    <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
 <header class="menu">
     <nav>
-        <div class="logo">Tienda Electrónica</div>
-
-        <!-- ÍCONO HAMBURGUESA -->
+        <div class="logo" onclick="location.href='Pg_web_de_venta_electronicos.html'">Tienda Electrónica</div>
         <div class="hamburguesa" id="hamburguesa">☰</div>
-
-        <!-- MENÚ -->
         <ul id="nav-links">
-            <li><a href="index.html">Inicio</a></li>
+            <li><a href="Pg_web_de_venta_electronicos.html">Inicio</a></li>
             <li><a href="celulares.html">Celulares</a></li>
             <li><a href="laptops.html">Laptops</a></li>
             <li><a href="tablets.html">Tablets</a></li>
             <li><a href="relojes.html">Relojes</a></li>
             <li><a href="televisores.html">Televisores</a></li>
             <li><a href="electrodomesticos.html">Electrodomésticos</a></li>
-
-            <!-- OPCIONES NUEVAS SOLO PARA HAMBURGUESA -->
-            <li><a href="promociones.html">🔥 Promociones</a></li>
-            <li><a href="#">👤 Iniciar Sesión</a></li>
-            <li><a href="informacion.html">ℹ️ Información</a></li>
+            <li><button onclick="toggleCarrito()" style="cursor:pointer; font-weight:bold; background:none; border:none; color:var(--acento);">🛒 Carrito</button></li>
+            <li><button onclick="toggleComparacion()" style="cursor:pointer; font-weight:bold; background:none; border:none; color:var(--acento);">⚖️ Comparar</button></li>
         </ul>
     </nav>
 </header>
@@ -38,92 +31,104 @@
 <section class="portada">
     <h1>Tecnología moderna</h1>
     <p>Explora nuestra colección de productos electrónicos</p>
-    <button>Ver Productos</button>
+    <button onclick="location.href='celulares.html'">Ver Productos</button>
 </section>
 
 <section class="grupo">
     <h2>Celulares</h2>
-    <div class="items-container">
-        <div class="item">
-            <img src="img/17pro.webp" alt="iPhone 17 Pro">
-            <p>iPhone 17 Pro</p>
-        </div>
-        <div class="item">
-            <img src="img/17pro.webp" alt="iPhone 17 Pro">
-            <p>iPhone 17 Pro</p>
-        </div>
-        <div class="item">
-            <img src="img/17pro.webp" alt="iPhone 17 Pro">
-            <p>iPhone 17 Pro</p>
-        </div>
+    <div class="items-container" id="celulares-container">
+        
     </div>
 </section>
 
 <section class="grupo">
     <h2>Laptops</h2>
-    <div class="items-container">
-        <div class="item">
-            <img src="img/macbookpro.jpg" alt="MacBook Pro 14">
-            <p>MacBook Pro 14”</p>
-        </div>
-        <div class="item">
-            <img src="img/macbookpro.jpg" alt="MacBook Pro 14">
-            <p>MacBook Pro 14”</p>
-        </div>
-    </div>
-</section>
-
-<section class="grupo">
-    <h2>Televisores</h2>
-    <div class="items-container">
-        <div class="item">
-            <img src="https://example.com/tv.jpg" alt="TV 65 pulgadas">
-            <p>Smart TV 65”</p>
-        </div>
-    </div>
+    <div class="items-container" id="laptops-container"></div>
 </section>
 
 <section class="grupo">
     <h2>Tablets</h2>
-    <div class="items-container">
-        <div class="item">
-            <img src="https://example.com/ipad.jpg" alt="iPad Pro">
-            <p>iPad Pro</p>
-        </div>
-    </div>
+    <div class="items-container" id="tablets-container"></div>
 </section>
 
 <section class="grupo">
     <h2>Relojes</h2>
-    <div class="items-container">
-        <div class="item">
-            <img src="https://example.com/reloj.jpg" alt="Reloj inteligente">
-            <p>Smartwatch</p>
-        </div>
-    </div>
+    <div class="items-container" id="relojes-container"></div>
+</section>
+
+<section class="grupo">
+    <h2>Televisores</h2>
+    <div class="items-container" id="televisores-container"></div>
 </section>
 
 <section class="grupo">
     <h2>Electrodomésticos</h2>
-    <div class="items-container">
-        <div class="item">
-            <img src="https://example.com/refri.jpg" alt="Refrigeradora">
-            <p>Refrigeradora Inteligente</p>
-        </div>
-    </div>
+    <div class="items-container" id="electrodomesticos-container"></div>
 </section>
 
 <footer>
     <p>© 2025 Tienda Electrónica</p>
 </footer>
 
+<script src="script.js"></script>
 <script>
-const hamburguesa = document.getElementById('hamburguesa');
-const navLinks = document.getElementById('nav-links');
 
-hamburguesa.addEventListener('click', () => {
-    navLinks.classList.toggle('show');
-});
+const productos = {
+    celulares: [
+        { id: 'c1', nombre: 'iPhone 17 Pro', precio: 7000, img: 'img/17pro.webp', descripcion: 'Última tecnología Apple con cámara triple y pantalla OLED.' },
+        { id: 'c2', nombre: 'Samsung Galaxy S24 ultra', precio: 6500, img: 'img/S24.webp', descripcion: 'Pantalla AMOLED y cámara avanzada para fotos profesionales.' },
+        { id: 'c3', nombre: 'Xiaomi 15 Ultra', precio: 4500, img: 'img/xiaomi_15_ultra.webp', descripcion: 'Gran rendimiento y batería duradera para todo el día.' },
+        { id: 'c4', nombre: 'Honor Magic 7 pro ', precio: 4800, img: 'img/honor  magic 7 pro.webp', descripcion: 'Cámara inteligente y Android puro.' }
+    ],
+    laptops: [
+        { id: 'l1', nombre: 'MacBook Pro 14"', precio: 15000, img: 'img/asus rogstrix g16.jpg', descripcion: 'Procesador M1 Pro, 16GB RAM, pantalla retina.' },
+        { id: 'l2', nombre: 'Dell XPS 13', precio: 12000, img: 'img/dellxps13.webp', descripcion: 'Ultra portátil, gran duración de batería.' }
+    ],
+    tablets: [
+        { id: 't1', nombre: 'iPad Pro', precio: 8000, img: 'img/ipadpro.webp', descripcion: 'Pantalla Liquid Retina y chip M1.' }
+    ],
+    relojes: [
+        { id: 'r1', nombre: 'Smartwatch', precio: 1800, img: 'img/smartwatch.webp', descripcion: 'Funciones inteligentes y diseño elegante.' }
+    ],
+    televisores: [
+        { id: 'tv1', nombre: 'Smart TV 65"', precio: 8500, img: 'img/tv65.webp', descripcion: 'Resolución 4K, HDR, conexión inteligente.' }
+    ],
+    electrodomesticos: [
+        { id: 'e1', nombre: 'Refrigeradora Inteligente', precio: 9500, img: 'img/refri.webp', descripcion: 'Control por app y eficiencia energética.' }
+    ]
+};
+
+// Función para cargar productos en contenedores
+function cargarProductos() {
+    Object.keys(productos).forEach(categoria => {
+        const contenedor = document.getElementById(categoria + '-container');
+        if (!contenedor) return;
+        productos[categoria].forEach(prod => {
+            const div = document.createElement('div');
+            div.classList.add('item');
+            div.innerHTML = `
+                <img src="${prod.img}" alt="${prod.nombre}">
+                <p>${prod.nombre}</p>
+                <p>Bs ${prod.precio.toFixed(2)}</p>
+                <button onclick="verDetalle('${prod.id}')">Ver Detalle</button>
+                <button onclick='agregarProducto("carrito", ${JSON.stringify(prod)})'>🛒 Agregar</button>
+                <button onclick='agregarProducto("comparacion", ${JSON.stringify(prod)})'>⚖️ Comparar</button>
+            `;
+            contenedor.appendChild(div);
+        });
+    });
+}
+
+// Guardamos los productos globalmente para acceso en verDetalle
+window.productosGlobal = productos;
+
+// Función para ir a detalle con ID en localStorage
+function verDetalle(id) {
+    localStorage.setItem('productoSeleccionado', id);
+    window.location.href = 'detalle.html';
+}
+
+window.onload = cargarProductos;
 </script>
 
 </body>

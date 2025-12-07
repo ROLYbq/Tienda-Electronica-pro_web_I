@@ -13,7 +13,7 @@
         <div class="logo">Tienda Electrónica</div>
         <div class="hamburguesa" id="hamburguesa">&#9776;</div>
         <ul id="nav-links">
-            <li><a href="index.html">Inicio</a></li>
+            <li><a href="Pg_web_de_venta_electronicos.html">Inicio</a></li>
             <li><a href="celulares.html">Celulares</a></li>
             <li><a href="laptops.html">Laptops</a></li>
             <li><a href="tablets.html">Tablets</a></li>
@@ -26,9 +26,50 @@
 
 <section class="grupo">
     <h2>Laptops</h2>
+
+    <h3>Asus</h3>
     <div class="items-container">
-        <div class="item"><img src="img/macbookpro.jpg"><p>MacBook Pro 14"</p></div>
-        <div class="item"><img src="img/macbookpro.jpg"><p>MacBook Pro 14"</p></div>
+        <div class="item" onclick="verDetalle('Asus ROG Strix', 'img/asus rogstrix g16.webp', 1500, ['Pantalla 15.6', 'Intel i7', '16GB RAM', 'RTX 3070'])">
+            <img src="img/asus rogstrix g16.jpg" alt="Asus ROG Strix">
+            <p>Asus ROG Strix</p>
+            <p>Bs 11.000</p>
+        </div>
+    </div>
+
+    <h3>Lenovo</h3>
+    <div class="items-container">
+        <div class="item" onclick="verDetalle('Lenovo Legion 5', 'img/lenovo legionpro 7i.webp', 1200, ['Pantalla 15.6', 'AMD Ryzen 7', '16GB RAM', 'RTX 3060'])">
+            <img src="img/lenovo legionpro 7i.webp" alt="Lenovo Legion 5">
+            <p>Lenovo Legion 5</p>
+            <p>Bs 9.000</p>
+        </div>
+    </div>
+
+    <h3>Razer</h3>
+    <div class="items-container">
+        <div class="item" onclick="verDetalle('Razer Blade 15', 'img/razen blade 16.jpg', 2000, ['Pantalla 15.6', 'Intel i9', '32GB RAM', 'RTX 3080'])">
+            <img src="img/razen blade 16.jpg" alt="Razer Blade 15">
+            <p>Razer Blade 15</p>
+            <p>Bs 15.000</p>
+        </div>
+    </div>
+
+    <h3>HP</h3>
+    <div class="items-container">
+        <div class="item" onclick="verDetalle('HP Omen 16', 'img/hp_omen.webp', 1300, ['Pantalla 16', 'Intel i7', '16GB RAM', 'RTX 3060'])">
+            <img src="img/hp" alt="HP Omen 16">
+            <p>HP Omen 16</p>
+            <p>Bs 10.500</p>
+        </div>
+    </div>
+
+    <h3>Dell</h3>
+    <div class="items-container">
+        <div class="item" onclick="verDetalle('Dell XPS 15', 'img/dell_xps.webp', 1400, ['Pantalla 15.6 4K', 'Intel i7', '16GB RAM', '512GB SSD'])">
+            <img src="img/dell_xps.webp" alt="Dell XPS 15">
+            <p>Dell XPS 15</p>
+            <p>Bs 11.500</p>
+        </div>
     </div>
 </section>
 
@@ -38,6 +79,11 @@ const navLinks = document.getElementById('nav-links');
 hamburguesa.addEventListener('click', () => {
     navLinks.classList.toggle('show');
 });
+
+function verDetalle(nombre, img, precio, caracteristicas) {
+    localStorage.setItem('productoDetalle', JSON.stringify({nombre, img, precio, caracteristicas}));
+    window.location.href = 'detalle.html';
+}
 </script>
 
 </body>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Carrito de Compras - Tienda Electrónica</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="menu">
+    <nav>
+        <div class="logo">Tienda Electrónica</div>
+        <div class="hamburguesa" id="hamburguesa">☰</div>
+        <ul id="nav-links">
+            <li><a href="Pg_web_de_venta_electronicos.html">Inicio</a></li>
+            <li><a href="celulares.html">Celulares</a></li>
+            <li><a href="laptops.html">Laptops</a></li>
+            <li><a href="tablets.html">Tablets</a></li>
+            <li><a href="relojes.html">Relojes</a></li>
+            <li><a href="televisores.html">Televisores</a></li>
+            <li><a href="electrodomesticos.html">Electrodomésticos</a></li>
+            <li><a href="carrito.html" class="active">Carrito</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="grupo">
+    <h2>Tu Carrito</h2>
+    <div id="carrito-container" class="items-container">
+        <!-- Aquí se mostrarán los productos agregados -->
+    </div>
+    <div style="text-align:center; margin-top: 20px;">
+        <button id="btn-comprar" disabled>Proceder a Comprar</button>
+    </div>
+</section>
+
+<footer>
+    <p>© 2025 Tienda Electrónica</p>
+</footer>
+
+<script src="script.js"></script>
+<script>
+    const hamburguesa = document.getElementById('hamburguesa');
+    const navLinks = document.getElementById('nav-links');
+    hamburguesa.addEventListener('click', () => {
+        navLinks.classList.toggle('show');
+    });
+
+    const carritoContainer = document.getElementById('carrito-container');
+    const btnComprar = document.getElementById('btn-comprar');
+
+    function mostrarCarrito() {
+        let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+        carritoContainer.innerHTML = '';
+
+        if(carrito.length === 0) {
+            carritoContainer.innerHTML = '<p>Tu carrito está vacío.</p>';
+            btnComprar.disabled = true;
+            return;
+        }
+
+        btnComprar.disabled = false;
+
+        carrito.forEach((prod, index) => {
+            const div = document.createElement('div');
+            div.classList.add('item');
+            div.innerHTML = `
+                <img src="${prod.img}" alt="${prod.nombre}" />
+                <p><strong>${prod.nombre}</strong></p>
+                <p>Precio: Bs. ${prod.precio}</p>
+                <button onclick="quitarDelCarrito(${index})">Quitar</button>
+            `;
+            carritoContainer.appendChild(div);
+        });
+    }
+
+    function quitarDelCarrito(index) {
+        let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+        carrito.splice(index, 1);
+        localStorage.setItem('carrito', JSON.stringify(carrito));
+        mostrarCarrito();
+    }
+
+    btnComprar.addEventListener('click', () => {
+        window.location.href = "comparar.html";
+    });
+
+    mostrarCarrito();
+</script>
+
+</body>
+</html>
